@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'PROD' }
     parameters {
         choice(name: 'ACTION', choices: ['plan', 'apply', 'destroy'], description: 'Select the action')
     }

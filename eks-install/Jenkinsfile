@@ -22,6 +22,16 @@ pipeline {
                 }
             }
         }
+        stage('Approve Plan') {
+            when {
+                expression { return params.ACTION == 'plan' }
+            }
+            steps {
+                script {
+                    input message: 'Do you approve the Terraform plan?', ok: 'Yes, proceed', submitter: 'prashanthprashanthmunigala'
+                }
+            }
+        }
         stage('Terraform Plan') {
             when {
                 expression { return params.ACTION == 'plan' }
